@@ -13,3 +13,18 @@
 .externalNativeBuild
 .cxx
 local.properties
+# === Android / IDE ===
+/.idea/
+*.iml
+/local.properties
+/.gradle/
+/build/
+/app/build/
+
+# === Keystores & secrets ===
+*.keystore
+*.jks
+
+# === Project artifacts you uploaded ===
+/app/src/main/LifeSeed.zip
+/app/src/main/LifeSeed/

@@ -1,9 +1,33 @@
 <resources>
     <string name="app_name">LifeSeed</string>
+
+    <!-- Navigation/titles -->
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Auth labels -->
+    <string name="email_hint">email</string>
+    <string name="password_hint">password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create New Account</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="or_continue_with">or continue with</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+
+    <!-- Auth messages -->
+    <string name="fill_all_details">Please fill all the details</string>
+    <string name="login_success">Login Successful</string>
+    <string name="reset_link_sent">Reset link sent to %1$s</string>
+    <string name="reset_link_failed">Failed to send reset link</string>
+    <string name="enter_email_first">Please enter your email above first</string>
+
+    <!-- Accessibility -->
+    <string name="profile_illustration">Profile illustration</string>
+    <string name="add_badge">Add badge</string>
+
+    <!-- Data -->
     <string-array name="ethnicity_options">
         <item>Asian</item>
         <item>European</item>
@@ -12,5 +36,4 @@
         <item>Latin American</item>
         <item>Other</item>
     </string-array>
-
 </resources>

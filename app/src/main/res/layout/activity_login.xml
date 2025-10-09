@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
@@ -12,6 +13,7 @@
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_marginTop="136dp"
+        android:contentDescription="@string/profile_illustration"
         android:src="@drawable/user"
         app:civ_border_color="#FF000000"
         app:civ_border_width="2dp"
@@ -26,6 +28,7 @@
         android:id="@+id/addImage"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:contentDescription="@string/add_badge"
         android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintEnd_toEndOf="@+id/profile_image"
@@ -34,6 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/profile_image"
         app:layout_constraintVertical_bias="0.93" />
 
+    <!-- Email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email"
         android:layout_width="match_parent"
@@ -41,42 +45,50 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="32dp"
-        android:hint="email"
-        android:visibility="visible"
+        android:hint="@string/email_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
-        tools:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@+id/profile_image">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            tools:visibility="visible" />
-
+            android:inputType="textEmailAddress"
+            tools:text="user@example.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pass"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="password"
-        android:visibility="visible"
+        android:hint="@string/password_hint"
         app:layout_constraintEnd_toEndOf="@+id/email"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        tools:visibility="visible">
+        app:layout_constraintTop_toBottomOf="@+id/email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
-            tools:visibility="visible" />
-
+            android:inputType="textPassword"
+            tools:text="password123" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Forgot password action -->
+    <TextView
+        android:id="@+id/forgotPasswordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toStartOf="@id/pass"
+        app:layout_constraintTop_toBottomOf="@id/pass" />
+
+    <!-- Login -->
     <Button
         android:id="@+id/login_btn"
         style="@style/Widget.Material3.Button.Icon"
@@ -84,13 +96,55 @@
         android:layout_height="55dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/green"
-        android:text="Login"
+        android:text="@string/login"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/pass"
         app:layout_constraintStart_toStartOf="@+id/pass"
-        app:layout_constraintTop_toBottomOf="@+id/pass" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText" />
 
+    <!-- Divider with "or continue with" -->
+    <LinearLayout
+        android:id="@+id/dividerContinueWith"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@id/login_btn">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#DDDDDD"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/or_continue_with"
+            android:textColor="#888888"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#DDDDDD"/>
+    </LinearLayout>
+
+    <!-- Google sign-in button (official widget renders proper branding) -->
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/googleSignInBtn"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@id/dividerContinueWith" />
+
+    <!-- Create account -->
     <Button
         android:id="@+id/createAccountBtn"
         style="@style/Widget.Material3.Button.OutlinedButton"
@@ -98,12 +152,11 @@
         android:layout_height="55dp"
         android:layout_marginBottom="32dp"
         android:elevation="20dp"
-        android:text="Create New Account"
+        android:text="@string/create_account"
         android:textColor="@color/green"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_btn"
         app:layout_constraintStart_toStartOf="@+id/login_btn" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
